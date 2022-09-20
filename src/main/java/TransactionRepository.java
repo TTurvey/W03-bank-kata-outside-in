@@ -6,7 +6,6 @@ public class TransactionRepository {
 
     void logTransaction(Transaction transaction) {
         transactionHistory.add(transaction);
-//        String transaction = formatDate() + " || " + amount + "    || " + total;
     }
 
 }

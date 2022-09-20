@@ -27,10 +27,9 @@ public class TransactionPrinter {
     }
 
     public String formatDateTime(Transaction transaction) {
-//        transaction.dateTime
-        Date date = new GregorianCalendar(2012, Calendar.JANUARY, 14).getTime();
         String pattern = "dd/MM/yyyy";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-        return simpleDateFormat.format(date);
+
+        return simpleDateFormat.format(transaction.dateTime);
     }
 }

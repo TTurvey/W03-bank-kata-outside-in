@@ -2,15 +2,25 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AccountShould {
 
-    private String headings = "Date       || Amount || Balance";
+    private final String headings = "Date       || Amount || Balance";
+    private String getTodaysDate() {
+        Date today = new Date();
+        String pattern = "dd/MM/yyyy";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+
+        return simpleDateFormat.format(today);
+    }
 
     @Test
     void
-    print_statement_returns_transations() {
+    print_statement_returns_transactions() {
         assertEquals(headings, new Account().printStatement() );
     }
 
@@ -22,7 +32,7 @@ public class AccountShould {
     void deposit_made_and_print_statement (int amount, int total) {
         Account account = new Account();
         account.deposit(amount);
-        String expectedPrintStatement = headings + "\n" + "14/01/2012 || " + amount + "    || " + total;
+        String expectedPrintStatement = headings + "\n" + getTodaysDate() + " || " + amount + "    || " + total;
         assertEquals( expectedPrintStatement, account.printStatement() );
     }
 
@@ -37,8 +47,8 @@ public class AccountShould {
         account.deposit(amount2);
 
         String expectedPrintStatement = headings
-                + "\n" + "14/01/2012 || 500    || 500"
-                + "\n" + "14/01/2012 || 1000    || 1500";
+                + "\n" + getTodaysDate() + " || 500    || 500"
+                + "\n" + getTodaysDate() + " || 1000    || 1500";
 
         assertEquals(expectedPrintStatement, account.printStatement() );
     }
@@ -51,7 +61,7 @@ public class AccountShould {
     void withdrawal_made_and_print_statement (int amount, int total) {
         Account account = new Account();
         account.withdraw(amount);
-        String expectedPrintStatement = headings + "\n" + "14/01/2012 || " + -amount + "    || " + total;
+        String expectedPrintStatement = headings + "\n" + getTodaysDate() + " || " + -amount + "    || " + total;
         assertEquals( expectedPrintStatement, account.printStatement() );
     }
 
@@ -69,10 +79,10 @@ public class AccountShould {
         account.withdraw(amount4);
 
         String expectedPrintStatement = headings
-                + "\n" + "14/01/2012 || 500    || 500"
-                + "\n" + "14/01/2012 || 1000    || 1500"
-                + "\n" + "14/01/2012 || -1200    || 300"
-                + "\n" + "14/01/2012 || -10    || 290";
+                + "\n" + getTodaysDate() + " || 500    || 500"
+                + "\n" + getTodaysDate() + " || 1000    || 1500"
+                + "\n" + getTodaysDate() + " || -1200    || 300"
+                + "\n" + getTodaysDate() + " || -10    || 290";
 
         assertEquals(expectedPrintStatement, account.printStatement() );
     }
@@ -80,8 +90,6 @@ public class AccountShould {
 }
 
 // TO DO:
-// Deal with the primitive obsession - create transaction class instead of arraylist of strings.
 // Create date/calendar class - mock the date we want in the tests.
-// Implement printer class - move format methods to the printer.
 // Account class implements AccountService interface...
 
