@@ -10,13 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class AccountShould {
 
     private final String headings = "Date       || Amount || Balance";
-    private String getTodaysDate() {
-        Date today = new Date();
-        String pattern = "dd/MM/yyyy";
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-
-        return simpleDateFormat.format(today);
-    }
+    private String transactionDate = new TransactionDate().formatTransactionDate();
 
     @Test
     void
@@ -32,7 +26,7 @@ public class AccountShould {
     void deposit_made_and_print_statement (int amount, int total) {
         Account account = new Account();
         account.deposit(amount);
-        String expectedPrintStatement = headings + "\n" + getTodaysDate() + " || " + amount + "    || " + total;
+        String expectedPrintStatement = headings + "\n" + transactionDate + " || " + amount + "    || " + total;
         assertEquals( expectedPrintStatement, account.printStatement() );
     }
 
@@ -47,8 +41,8 @@ public class AccountShould {
         account.deposit(amount2);
 
         String expectedPrintStatement = headings
-                + "\n" + getTodaysDate() + " || 500    || 500"
-                + "\n" + getTodaysDate() + " || 1000    || 1500";
+                + "\n" + transactionDate + " || 500    || 500"
+                + "\n" + transactionDate + " || 1000    || 1500";
 
         assertEquals(expectedPrintStatement, account.printStatement() );
     }
@@ -61,7 +55,7 @@ public class AccountShould {
     void withdrawal_made_and_print_statement (int amount, int total) {
         Account account = new Account();
         account.withdraw(amount);
-        String expectedPrintStatement = headings + "\n" + getTodaysDate() + " || " + -amount + "    || " + total;
+        String expectedPrintStatement = headings + "\n" + transactionDate + " || " + -amount + "    || " + total;
         assertEquals( expectedPrintStatement, account.printStatement() );
     }
 
@@ -79,10 +73,10 @@ public class AccountShould {
         account.withdraw(amount4);
 
         String expectedPrintStatement = headings
-                + "\n" + getTodaysDate() + " || 500    || 500"
-                + "\n" + getTodaysDate() + " || 1000    || 1500"
-                + "\n" + getTodaysDate() + " || -1200    || 300"
-                + "\n" + getTodaysDate() + " || -10    || 290";
+                + "\n" + transactionDate + " || 500    || 500"
+                + "\n" + transactionDate + " || 1000    || 1500"
+                + "\n" + transactionDate + " || -1200    || 300"
+                + "\n" + transactionDate + " || -10    || 290";
 
         assertEquals(expectedPrintStatement, account.printStatement() );
     }

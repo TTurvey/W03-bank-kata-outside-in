@@ -18,7 +18,7 @@ public class TransactionPrinter {
     public String formatTransaction(Transaction transaction) {
         String transactionString = "";
         transactionString += "\n"
-                + formatDateTime(transaction)
+                + transaction.transactionDate.formatTransactionDate()
                 + " || "
                 + transaction.amount
                 + "    || "
@@ -26,10 +26,5 @@ public class TransactionPrinter {
         return transactionString;
     }
 
-    public String formatDateTime(Transaction transaction) {
-        String pattern = "dd/MM/yyyy";
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
 
-        return simpleDateFormat.format(transaction.dateTime);
-    }
 }
