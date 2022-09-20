@@ -78,3 +78,10 @@ public class AccountShould {
     }
 
 }
+
+// TO DO:
+// Deal with the primitive obsession - create transaction class instead of arraylist of strings.
+// Create date/calendar class - mock the date we want in the tests.
+// Implement printer class - move format methods to the printer.
+// Account class implements AccountService interface...
+
