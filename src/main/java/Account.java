@@ -4,9 +4,11 @@ import java.util.List;
 public class Account {
 
     private final ArrayList<String> transactions = new ArrayList<>();
+    private int total = 0;
 
     public void deposit(String date, int amount) {
-        String transaction = "14/01/2012 || 500    || 500 ";
+        total += amount;
+        String transaction = date + " || " + amount + "    || " + total;
         transactions.add(transaction);
     }
 
@@ -15,10 +17,12 @@ public class Account {
     }
 
     public String printStatement() {
-        if (transactions.size() == 0) {
-            return "Date       || Amount || Balance";
+        String transactionsString = "";
+        for(int i =0; i < transactions.size(); i++ ) {
+            transactionsString += "\n" + transactions.get(i);
         }
-        return "Date       || Amount || Balance" + "\n" + "14/01/2012 || 500    || 500 ";
+
+        return "Date       || Amount || Balance" + transactionsString;
     }
 
 }
