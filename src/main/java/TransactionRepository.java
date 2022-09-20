@@ -9,7 +9,7 @@ public class TransactionRepository {
 
     final ArrayList<String> transactions = new ArrayList<>();
 
-    void makeTransaction(String date1, int amount, int total) {
+    void makeTransaction(int amount, int total) {
         Date date = new GregorianCalendar(2012, Calendar.JANUARY, 14).getTime();
         String pattern = "dd/MM/yyyy";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);

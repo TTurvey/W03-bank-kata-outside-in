@@ -4,15 +4,15 @@ public class Account {
     private final TransactionPrinter transactionPrinter = new TransactionPrinter();
     private int total = 0;
 
-    public void deposit(String date, int amount) {
+    public void deposit(int amount) {
         total += amount;
-        transactionRepository.makeTransaction(date, amount, total);
+        transactionRepository.makeTransaction(amount, total);
     }
 
-    public void withdraw(String date, int amount) {
+    public void withdraw(int amount) {
         int negativeAmount = -amount;
         total += negativeAmount;
-        transactionRepository.makeTransaction(date, negativeAmount, total);
+        transactionRepository.makeTransaction(negativeAmount, total);
     }
 
     public String printStatement() {
