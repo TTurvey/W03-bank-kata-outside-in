@@ -29,7 +29,7 @@ public class AccountShould {
     deposit_more_than_once_and_print_transaction() {
         String date1 = "14/01/2012";
         int amount1 = 500;
-        String date2 = "15/01/2012";
+        String date2 = "14/01/2012";
         int amount2 = 1000;
         Account account = new Account();
         account.deposit(date1, amount1);
@@ -37,7 +37,7 @@ public class AccountShould {
 
         String expectedPrintStatement = "Date       || Amount || Balance"
                 + "\n" + "14/01/2012 || 500    || 500"
-                + "\n" + "15/01/2012 || 1000    || 1500";
+                + "\n" + "14/01/2012 || 1000    || 1500";
 
         assertEquals(expectedPrintStatement, account.printStatement() );
     }
@@ -64,7 +64,7 @@ public class AccountShould {
         int amount2 = 1000;
         String date3 = "14/01/2012";
         int amount3 = 1200;
-        String date4 = "15/01/2012";
+        String date4 = "14/01/2012";
         int amount4 = 10;
         Account account = new Account();
         account.deposit(date1, amount1);
@@ -76,7 +76,7 @@ public class AccountShould {
                 + "\n" + "14/01/2012 || 500    || 500"
                 + "\n" + "14/01/2012 || 1000    || 1500"
                 + "\n" + "14/01/2012 || -1200    || 300"
-                + "\n" + "15/01/2012 || -10    || 290";
+                + "\n" + "14/01/2012 || -10    || 290";
 
         assertEquals(expectedPrintStatement, account.printStatement() );
     }

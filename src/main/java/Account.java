@@ -1,6 +1,7 @@
 public class Account {
 
     private final TransactionRepository transactionRepository = new TransactionRepository();
+    private final TransactionPrinter transactionPrinter = new TransactionPrinter();
     private int total = 0;
 
     public void deposit(String date, int amount) {
@@ -15,12 +16,7 @@ public class Account {
     }
 
     public String printStatement() {
-        String transactionsString = "";
-        for(int i = 0; i < transactionRepository.transactions.size(); i++ ) {
-            transactionsString += "\n" + transactionRepository.transactions.get(i);
-        }
-
-        return "Date       || Amount || Balance" + transactionsString;
+        return transactionPrinter.printStatement(transactionRepository.transactions);
     }
 
 }
