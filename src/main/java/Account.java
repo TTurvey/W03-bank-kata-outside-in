@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.List;
 
 public class Account {
 
@@ -7,13 +6,19 @@ public class Account {
     private int total = 0;
 
     public void deposit(String date, int amount) {
+        makeTransaction(date, amount);
+    }
+
+
+    public void withdraw(String date, int amount) {
+        int negativeAmount = -amount;
+        makeTransaction(date, negativeAmount);
+    }
+
+    private void makeTransaction(String date, int amount) {
         total += amount;
         String transaction = date + " || " + amount + "    || " + total;
         transactions.add(transaction);
-    }
-
-    public void withdraw() {
-
     }
 
     public String printStatement() {
