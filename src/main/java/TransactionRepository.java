@@ -10,12 +10,14 @@ public class TransactionRepository {
     final ArrayList<String> transactions = new ArrayList<>();
 
     void makeTransaction(int amount, int total) {
+        String transaction = formatDate() + " || " + amount + "    || " + total;
+        transactions.add(transaction);
+    }
+
+    String formatDate() {
         Date date = new GregorianCalendar(2012, Calendar.JANUARY, 14).getTime();
         String pattern = "dd/MM/yyyy";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-        String formattedDate = simpleDateFormat.format(date);
-
-        String transaction = formattedDate + " || " + amount + "    || " + total;
-        transactions.add(transaction);
+        return simpleDateFormat.format(date);
     }
 }
