@@ -13,4 +13,17 @@ public class AccountShould {
         assertEquals(headings, new Account().printStatement() );
     }
 
+    @Test
+    void
+    deposit_and_print_transaction() {
+        String date = "14/01/2012";
+        int amount = 500;
+        Account account = new Account();
+        account.deposit(date, amount);
+
+        String expectedPrintStatement = "Date       || Amount || Balance" + "\n" + "14/01/2012 || 500    || 500 ";
+
+        assertEquals(expectedPrintStatement, account.printStatement() );
+    }
+
 }
