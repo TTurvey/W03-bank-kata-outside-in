@@ -5,6 +5,10 @@ public class TransactionDate {
 
     public final Date transactionDate;
 
+    public TransactionDate(Date date){
+        this.transactionDate = date;
+    }
+
     public TransactionDate(){
         this.transactionDate = new Date();
     }

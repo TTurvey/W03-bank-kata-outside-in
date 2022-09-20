@@ -84,6 +84,5 @@ public class AccountShould {
 }
 
 // TO DO:
-// Create date/calendar class - mock the date we want in the tests.
 // Account class implements AccountService interface...
 

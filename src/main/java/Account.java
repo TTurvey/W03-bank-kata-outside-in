@@ -1,10 +1,17 @@
 import java.util.ArrayList;
 
-public class Account {
+
+//implements AccountService
+public class Account  {
 
     private final TransactionRepository transactionRepository;
     private final TransactionPrinter transactionPrinter;
     private int total = 0;
+
+    public Account(TransactionRepository transactionRepository, TransactionPrinter printer) {
+        this.transactionRepository = transactionRepository;
+        this.transactionPrinter = printer;
+    }
 
     public Account() {
         this.transactionRepository = new TransactionRepository();

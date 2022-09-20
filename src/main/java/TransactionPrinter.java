@@ -1,10 +1,16 @@
 import java.util.ArrayList;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 
 public class TransactionPrinter {
+    Console console;
+
+    public TransactionPrinter(Console console) {
+        this.console = console;
+    }
+
+    public TransactionPrinter() {
+        this.console = new Console();
+    }
+
     public String printStatement(ArrayList<Transaction> transactionHistory) {
         String headings = "Date       || Amount || Balance";
         String transactionHistoryString = "";
@@ -12,7 +18,9 @@ public class TransactionPrinter {
             transactionHistoryString += formatTransaction(transaction);
         }
 
-        return  headings + transactionHistoryString;
+        String output = headings + transactionHistoryString;
+        console.printsToConsole(output);
+        return output; // fake
     }
 
     public String formatTransaction(Transaction transaction) {
@@ -28,3 +36,9 @@ public class TransactionPrinter {
 
 
 }
+
+// make Console class
+// change String returns to void
+// clock
+// argument captor
+
